@@ -6,8 +6,10 @@ on:
       environment:
         type: environment
         description: Select the environment
-        equired: true
-        default: 'dev,staging,[uat],prod'
+        options:
+          - dev
+          - qa
+          - prod
       # boolean:
       #   type: boolean
       #   description: True or False
