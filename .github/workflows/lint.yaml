@@ -10,7 +10,7 @@ on:
 jobs:
   my-job:
     runs-on: ubuntu-latest
-    steps:
+       steps:
       - name: my-step-1
         run: echo "workflow 1"
 
