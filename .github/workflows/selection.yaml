@@ -11,13 +11,13 @@ on:
       # boolean:
       #   type: boolean
       #   description: True or False
-      # choice:
-      #   type: choice
-      #   description: Make a choice
-      #   options:
-      #   - dev
-      #   - qa
-      #   - prod
+        choice:
+          type: choice
+          description: Make a choice
+          options:
+            - dev
+            - qa
+            - prod
 jobs:
   build:
     runs-on: ubuntu-latest
