@@ -2,10 +2,10 @@ name: workflow1
 on:
   push:
     branches:
-      - master
+      - test
   pull_request:
     branches:
-      - master
+      - test
 
 jobs:
   my-job:
@@ -13,3 +13,5 @@ jobs:
     steps:
       - name: my-step-1
         run: echo "workflow 1"
+
+
