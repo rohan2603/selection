@@ -6,10 +6,6 @@ on:
       environment:
         type: environment
         description: Select the environment
-        options:
-          - dev
-          - qa
-          - prod
       # boolean:
       #   type: boolean
       #   description: True or False
