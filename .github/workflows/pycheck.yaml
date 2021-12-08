@@ -1,0 +1,14 @@
+name: workflow2
+on:
+  workflow_run:
+    workflows: ["workflow1"]
+    types:
+      - completed
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: my-step-2
+        run: echo "workflow2"
+
+        
