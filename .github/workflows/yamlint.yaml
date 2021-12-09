@@ -11,12 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Linting Yaml Code
-      uses: iranzo/ansible-lint-action@v4.1.1
+    - name: Run action
+      uses: jacobtomlinson/gha-lint-yaml@master
       with:
-        targets: |
-          .github/workflows/yamlint.yaml
-
-          
+        path: .github/workflows/yamlint.yaml
 
 
