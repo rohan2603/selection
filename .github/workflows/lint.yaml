@@ -1,12 +1,16 @@
 name: workflow1
 on:
-  push:
-    branches:
-      - test
-  pull_request:
-    branches:
-      - test
-
+  workflow_run:
+    workflows: ["yamllint"]
+    types:
+      - completed
+  # push:
+  #   branches:
+  #     - test
+  # pull_request:
+  #   branches:
+  #     - test
+  
 jobs:
   my-job:
     runs-on: ubuntu-latest
