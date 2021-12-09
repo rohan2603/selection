@@ -20,3 +20,4 @@ jobs:
           yamllint_file_or_dir: .github/workflows/attribute.yaml
           yamllint_strict: false
           yamllint_comment: true
+
