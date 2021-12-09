@@ -6,7 +6,6 @@ on:
   pull_request:
     branches:
       - test
-  
 jobs:
   yamllint:
     name: 'Yamllint'
@@ -17,7 +16,7 @@ jobs:
       - name: 'Yamllint'
         uses: karancode/yamllint-github-action@master
         with:
-          yamllint_file_or_dir: .github/workflows/attribute.yaml
+          yamllint_file_or_dir: .github/workflows/yamlint.yaml
           yamllint_strict: false
           yamllint_comment: true
 
