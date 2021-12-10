@@ -10,7 +10,3 @@ jobs:
     steps:
       - name: my-step-3
         run: echo "workflow3"
-
-
-
-
