@@ -1,4 +1,4 @@
-name: Validating All Yaml Files
+name: Validating
 on:
   push:
     branches:
