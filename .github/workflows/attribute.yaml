@@ -1,3 +1,4 @@
+---
 name: workflow3
 on:
   workflow_run:
