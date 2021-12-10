@@ -13,15 +13,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: harupy/find-trailing-whitespace@master
- build:
-  runs-on: ubuntu-latest
-  needs: whitespaces
-  steps:
-   - uses: actions/checkout@master
-   - name: Run action
-     uses: jacobtomlinson/gha-lint-yaml@master
-     with:
-      path: .github/workflows/*
+  build:
+    runs-on: ubuntu-latest
+    needs: whitespaces
+    steps:
+      - uses: actions/checkout@master
+      - name: Run action
+        uses: jacobtomlinson/gha-lint-yaml@master
+        with:
+          path: .github/workflows/*
 
 
 
