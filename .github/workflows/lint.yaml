@@ -2,7 +2,7 @@
 name: Pylint
 on:
   workflow_run:
-    workflows: [validation]
+    workflows: ["validation"]
     types:
       - completed
 jobs:
