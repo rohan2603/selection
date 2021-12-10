@@ -21,7 +21,7 @@ jobs:
       - name: Run action
         uses: jacobtomlinson/gha-lint-yaml@master
         with:
-          path: .github/workflows/*
+          path: .github/workflows/
 
 
 
