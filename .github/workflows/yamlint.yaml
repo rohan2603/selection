@@ -1,18 +1,24 @@
-name: 'Yamllint GitHub Actions'
+name: yamllint
 on:
-  - push
+ push:
+  branches:
+   - test
+ pull_request:
+  branches:
+   - test
 jobs:
-  yamllint:
-    name: 'Yamllint'
+  whitespaces:
+    name: Find Trailing Whitespace
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@master
-      - name: 'Yamllint'
-        uses: karancode/yamllint-github-action@master
+      - uses: actions/checkout@v2
+      - uses: harupy/find-trailing-whitespace@master
+  build:
+    runs-on: ubuntu-latest
+    needs: whitespaces
+    steps:
+      - uses: actions/checkout@master
+      - name: Run action
+        uses: jacobtomlinson/gha-lint-yaml@master
         with:
-          yamllint_file_or_dir: .github/workflows/
-          yamllint_strict: false
-          yamllint_comment: true
-
-
+          path: .github/workflows/lint.yaml
