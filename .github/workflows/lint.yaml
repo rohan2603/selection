@@ -10,7 +10,6 @@ on:
   # pull_request:
   #   branches:
   #     - test
-  
 jobs:
   my-job:
     runs-on: ubuntu-latest
