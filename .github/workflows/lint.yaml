@@ -8,7 +8,7 @@ on:
       - master
 
 jobs:
-  my-job:
+  validation:
     runs-on: ubuntu-latest
     steps:
       - name: my-step-1

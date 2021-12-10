@@ -5,7 +5,7 @@ on:
     types:
       - completed
 jobs:
-  my-job:
+  sonarqube:
     runs-on: ubuntu-latest
     steps:
       - name: my-step-2
