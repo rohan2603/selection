@@ -1,4 +1,4 @@
-name: workflow1
+name: Validating All Yaml Files
 on:
   push:
     branches:
