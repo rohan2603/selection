@@ -1,8 +1,8 @@
 ---
-name: workflow3
+name: sonarqube
 on:
   workflow_run:
-    workflows: ["workflow2"]
+    workflows: [Pylint]
     types:
       - completed
 jobs:
@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: my-step-3
-        run: echo "workflow3"
+        run: echo "sonarqube"

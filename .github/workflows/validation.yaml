@@ -1,5 +1,5 @@
 ---
-name: yamllint
+name: validation
 on:
  push:
   branches:
@@ -8,9 +8,8 @@ on:
   branches:
    - test
 jobs:
- YamlLinting:
-  runs-on: ubuntu-latest
-  steps:
-   - uses: actions/checkout@v2
-   - name: yaml-lint
-     uses: ibiqlik/action-yamllint@v3
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: my-step
+        run: echo "validation"
