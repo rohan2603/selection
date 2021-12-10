@@ -1,4 +1,4 @@
-name: workflow3
+name: Sonarqube
 on:
   workflow_run:
     workflows: ["workflow2"]
