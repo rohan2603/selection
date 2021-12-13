@@ -1,11 +1,13 @@
+---
+
 name: Validating
 on:
   push:
     branches:
-      - master
+      - ram
   pull_request:
     branches:
-      - master
+      - ram
 
 jobs:
   validation:
