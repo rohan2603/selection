@@ -1,3 +1,5 @@
+---
+
 name: Python Linting
 on:
   workflow_run:
