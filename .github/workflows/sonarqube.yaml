@@ -1,11 +1,11 @@
 name: Python Linting
 on:
   workflow_run:
-    workflows: ["workflow1"]
+    workflows: ["Sonarqube"]
     types:
       - completed
 jobs:
-  sonarqube:
+  demo:
     runs-on: ubuntu-latest
     steps:
       - name: my-step-2
