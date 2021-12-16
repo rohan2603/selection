@@ -17,7 +17,7 @@ jobs:
       - name: my-step-1
         run: echo "workflow 1"
       - name: Trigger next workflow
-        if: ${{ (github.event_name != 'workflow_dispatch' && success()) || (github.event_name == 'workflow_dispatch' && github.event.inputs.trigger_next && success()) }}
+        if: success()
         uses: peter-evans/repository-dispatch@v1
         with:
           token: "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"
