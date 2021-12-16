@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - rohan
+    paths:
+      - /.github/workflows/*
   pull_request:
     branches:
       - rohan
