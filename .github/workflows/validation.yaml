@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with: 
+          ref: rohan
       - name: my-step-1
         run: echo "workflow 1"
       - name: Trigger next workflow
@@ -21,6 +23,6 @@ jobs:
         uses: peter-evans/repository-dispatch@v1
         with:
           token: "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"
-          repository: ${{ github.repository }}
+          repository: ${{ github.event.repository.default_branch }}
           event-type: trigger-workflow-2
           client-payload: '{"github": ${{ toJson(github) }}}'
