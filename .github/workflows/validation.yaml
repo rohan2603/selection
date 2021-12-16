@@ -20,7 +20,7 @@ jobs:
         if: success()
         uses: peter-evans/repository-dispatch@v1
         with:
-          token: "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"
+          token: "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"
           repository: ${{ github.repository }}
           event-type: trigger-workflow-2
           client-payload: '{"github": ${{ toJson(github) }}}'
