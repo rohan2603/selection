@@ -1,16 +1,13 @@
----
-
-name: Python Linting
+name: Sonarqube
 on:
-  workflow_run:
-    workflows: ["Sonarqube"]
-    types:
-      - completed
+  repository_dispatch:
+    types: [trigger-workflow-2]
 jobs:
-  demo:
+  docker:
     runs-on: ubuntu-latest
     steps:
-      - name: my-step-2
-        run: echo "workflow2"
-
-        
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.client_payload.sha }}
+      - name: my-step-3
+        run: echo "workflow3"

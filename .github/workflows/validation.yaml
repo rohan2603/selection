@@ -13,5 +13,14 @@ jobs:
   validation:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: my-step-1
         run: echo "workflow 1"
+      - name: Trigger next workflow
+        if: ${{ (github.event_name != 'workflow_dispatch' && success()) || (github.event_name == 'workflow_dispatch' && github.event.inputs.trigger_next && success()) }}
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: "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"
+          repository: ${{ github.repository }}
+          event-type: trigger-workflow-2
+          client-payload: '{"github": ${{ toJson(github) }}}'
