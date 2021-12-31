@@ -4,6 +4,7 @@ on:
   workflow_run:
     workflows: [Pylint]
     types:
+      - requested
       - completed
 jobs:
   my-job:

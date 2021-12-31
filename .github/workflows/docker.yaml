@@ -1,10 +1,10 @@
 ---
-
 name: docker
 on:
   workflow_run:
     workflows: ["sonarqube"]
     types:
+      - requested
       - completed
 jobs:
   my-job:
