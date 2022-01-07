@@ -25,7 +25,7 @@ jobs:
         with: 
           python-version: 3.8
       - name: Execute Python code
-        run: bucket.py
+        run: python bucket.py
 
     
         
