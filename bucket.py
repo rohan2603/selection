@@ -1,4 +1,4 @@
 print("bucket gcp")
-read a
-print(a)
+val = input("Enter your value: ")
+print(val)
 
