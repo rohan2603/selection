@@ -1,8 +1,8 @@
 import os
-input_variable = os.environ['INPUT_STORE']
-demo = os.environ['demo_input']
+name_of_service = os.environ['INPUT_STORE']
+region = os.environ['demo_input']
 
 print("bucket gcp")
-print("Input var is :",input_variable)
-print(demo)
+print("Name is  :",name_of_service)
+print("Region is", region)
 
