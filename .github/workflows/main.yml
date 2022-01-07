@@ -6,19 +6,17 @@ on:
     inputs:
       name:
         type: choice
-        description: Who to greet
+        description: Name of GCP resource to be triggered
         options: 
-        - monalisa
-        - cschleiden
-      message:
+        - Bucket
+        - Cloud Function
+      region:
         required: true
-      use-emoji:
-        type: boolean
-        description: Include 🎉🤣 emojis
+
 jobs:
   greet:
     runs-on: ubuntu-latest
 
     steps:
     - name: Send greeting
-      run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
+      run: echo "${{ github.event.inputs.region }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
