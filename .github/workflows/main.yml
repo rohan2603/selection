@@ -12,6 +12,7 @@ on:
           - cloud function  
         required: true
 
+
 jobs:
   services_deployment:
     runs-on: ubuntu-latest
@@ -25,7 +26,8 @@ jobs:
         with: 
           python-version: 3.8
       - name: Execute Python code
-        run: python bucket.py
+        run: |
+          INPUT_STORE=${{ github.event.inputs.GCP_Service }} python bucket.py
 
     
         
