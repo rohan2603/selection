@@ -32,7 +32,7 @@ jobs:
           python-version: 3.8
       - name: Execute Python code
         run: |
-          demo_input=${{ github.event.inputs.Name }}, INPUT_STORE=${{ github.event.inputs.Region }} python Python_scripts/bucket.py
+          name_of_bucket=${{ github.event.inputs.Name }}, region=${{ github.event.inputs.Region }} python Python_scripts/bucket.py
 
   GCP_Cloud_Function_Deployment:
     runs-on: ubuntu-latest
