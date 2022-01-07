@@ -8,8 +8,8 @@ on:
         type: choice
         description: Resource to be created  
         options:
-          - bucket
-          - cloud function  
+          - Storage Bucket
+          - Cloud function  
         required: true
       Name:
         description: 'name of the resource to be created'
@@ -21,7 +21,7 @@ on:
 jobs:
   GCP_Bucket_Deployment:
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.GCP_Service == 'bucket' }}
+    if: ${{ github.event.inputs.GCP_Service == 'Storage Bucket' }}
     steps:
       - uses: actions/checkout@v2
       - name: print
@@ -36,7 +36,7 @@ jobs:
 
   GCP_Cloud_Function_Deployment:
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.GCP_Service == 'cloud function' }}
+    if: ${{ github.event.inputs.GCP_Service == 'Cloud Function' }}
     steps:
       - uses: actions/checkout@v2
       - name: print
