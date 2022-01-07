@@ -12,7 +12,7 @@ on:
           - Cloud function  
         required: true
       Name:
-        description: 'name of the resource to be created'
+        description: 'Name of the GCP resource to be created'
         required: true
       Region:
         description: 'Region where to be created'

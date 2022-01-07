@@ -19,7 +19,10 @@ import os
 from google.cloud import storage
 from google.cloud.exceptions import Conflict
 
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "../credentials.json"
+
 def main():
+
     name_of_bucket = os.environ['name_of_bucket']
     region = os.environ['region']
 
@@ -36,7 +39,7 @@ def main():
         # Create the bucket object.
         bucket.create(location=region)
         print('\nCreated')
-        
+
     except Conflict:
         print('Error: Bucket already exists!!')
         pass
