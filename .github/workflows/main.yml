@@ -36,6 +36,8 @@ jobs:
           version: '290.0.1'
           service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
           project_id: ${{ secrets.GCP_PROJECT_ID }}
+      - name: Install pip package for gcloud
+        run: pip install google-cloud-storage
       - name: Execute Python code
         run: |
           name_of_bucket=${{ github.event.inputs.Name }} region=${{ github.event.inputs.Region }} python Python_scripts/bucket.py
