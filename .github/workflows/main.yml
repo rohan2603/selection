@@ -46,7 +46,8 @@ jobs:
         with: 
           python-version: 3.8
       - name: Execute Python code
-        run: python cloud_function.py
+        run: |
+          name_of_cloud_function=${{ github.event.inputs.Name }} region=${{ github.event.inputs.Region }} python Python_scripts/cloud_function.py
 
     
         
