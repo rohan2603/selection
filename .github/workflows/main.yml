@@ -1,22 +1,24 @@
+---
 
-name: Mixed inputs
-
-on:
+name: GCP Services Deployment
+on: 
   workflow_dispatch:
     inputs:
-      name:
+      GCP_Service:
         type: choice
-        description: Name of GCP resource to be triggered
-        options: 
-        - Bucket
-        - Cloud Function
-      region:
+        description: Resource to be created  
+        options:
+          - bucket
+          - cloud function  
         required: true
 
 jobs:
-  greet:
+  services_deployment:
     runs-on: ubuntu-latest
-
+    if: ${{ github.event.inputs.GCP_Service == 'bucket' }}
     steps:
-    - name: Send greeting
-      run: echo "${{ github.event.inputs.region }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
+      - uses: actions/checkout@v2
+      - name: print
+        run: echo "gcp bucket"
+    
+        
