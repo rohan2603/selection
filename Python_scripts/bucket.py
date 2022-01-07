@@ -19,7 +19,7 @@ import os
 from google.cloud import storage
 from google.cloud.exceptions import Conflict
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "../credentials.json"
+#os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "../credentials.json"
 
 def main():
 
