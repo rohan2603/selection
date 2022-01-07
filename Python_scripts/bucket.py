@@ -4,5 +4,5 @@ demo = os.environ['demo_input']
 
 print("bucket gcp")
 print("Input var is :",input_variable)
-print("demo")
+print(demo)
 
