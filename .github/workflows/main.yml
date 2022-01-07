@@ -32,6 +32,7 @@ jobs:
           python-version: 3.8
       - name: Execute Python code
         run: |
+          demo_input=${{ github.event.inputs.Name }},
           INPUT_STORE=${{ github.event.inputs.GCP_Service }} python bucket.py
 
   GCP_Cloud_Function_Deployment:
