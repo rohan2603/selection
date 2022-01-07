@@ -40,14 +40,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: print
-        run: echo "gcp bucket"
+        run: echo "gcp cloud function"
       - name: Setup Pythom
         uses: actions/setup-python@v2
         with: 
           python-version: 3.8
       - name: Execute Python code
-        run: |
-          INPUT_STORE=${{ github.event.inputs.GCP_Service }} python cloud_function.py
+        run: python cloud_function.py
 
     
         
