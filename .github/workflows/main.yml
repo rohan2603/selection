@@ -28,7 +28,7 @@ on:
 jobs:
   GCP_Create_Bucket:
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.Operation_Needed == 'Create' }} && ${{ github.event.inputs.GCP_Service == 'Storage Bucket' }}
+    if: ${{ github.event.inputs.Operation_Needed == 'Create' } && { github.event.inputs.GCP_Service == 'Storage Bucket' }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -59,7 +59,7 @@ jobs:
 
   GCP_Delete_Bucket:
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.Operation_Needed == 'Delete' }} && ${{ github.event.inputs.GCP_Service == 'Storage Bucket' }}
+    if: ${{ github.event.inputs.Operation_Needed == 'Delete' } && { github.event.inputs.GCP_Service == 'Storage Bucket' }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
