@@ -1,11 +1,7 @@
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
-# cloudstoragedelete.py
-# It is an example that handles Cloud Storage buckets on Google Cloud Platform (GCP).
 # Delete a Cloud Storage bucket.
-# You must provide 1 parameter:
-# BUCKET_NAME = Name of the bucket
 
+import os
 from google.cloud import storage
 from google.cloud.exceptions import NotFound
 from google.cloud.exceptions import Forbidden
