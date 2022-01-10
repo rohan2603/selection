@@ -64,6 +64,11 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with: 
+          python-version: 3.8
+
       - name: Setup gcloud
         uses: google-github-actions/setup-gcloud@master
         with:
@@ -76,11 +81,12 @@ jobs:
         with:
           credentials_json: '${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}'
 
-      - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v0'
-
-      - name: 'Use gcloud CLI'
-        run: 'gcloud alpha storage rm --quiet --recursive gs://${{ github.event.inputs.Name }}/'
+      - name: Install pip package for gcloud
+        run: pip install google-cloud-storage
+        
+      - name: Execute Python code to Delete GCP Bucket
+        run: |
+          name_of_bucket=${{ github.event.inputs.Name }} python Python_scripts/delete_bucket.py
 
   GCP_Cloud_Function_Deployment:
     runs-on: ubuntu-latest
