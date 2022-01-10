@@ -1,12 +1,19 @@
 ---
-
+ 
 name: GCP Services Deployment
 on: 
   workflow_dispatch:
     inputs:
+      Operation_Needed:
+        type: choice
+        description: What operation needs to be performed  
+        options:
+          - Create
+          - Delete 
+        required: true
       GCP_Service:
         type: choice
-        description: Resource to be created  
+        description: Choose GCP Service  
         options:
           - Storage Bucket
           - Cloud function  
@@ -19,9 +26,9 @@ on:
         required: true
 
 jobs:
-  GCP_Bucket_Deployment:
+  GCP_Create_Bucket:
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.GCP_Service == 'Storage Bucket' }}
+    if: ${{ github.event.inputs.Operation_Needed == 'Create' }} && ${{ github.event.inputs.GCP_Service == 'Storage Bucket' }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -48,7 +55,7 @@ jobs:
         
       - name: Execute Python code
         run: |
-          name_of_bucket=${{ github.event.inputs.Name }} region=${{ github.event.inputs.Region }} python Python_scripts/bucket.py
+          name_of_bucket=${{ github.event.inputs.Name }} region=${{ github.event.inputs.Region }} python Python_scripts/create_bucket.py
 
   GCP_Cloud_Function_Deployment:
     runs-on: ubuntu-latest
@@ -59,7 +66,7 @@ jobs:
         uses: actions/setup-python@v2
         with: 
           python-version: 3.8
-          
+
       - name: 'Authenticate to Google Cloud'
         uses: 'google-github-actions/auth@v0'
         with:
