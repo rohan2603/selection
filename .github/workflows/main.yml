@@ -55,15 +55,20 @@ jobs:
     if: ${{ github.event.inputs.GCP_Service == 'Cloud Function' }}
     steps:
       - uses: actions/checkout@v2
-      - name: print
-        run: echo "gcp cloud function"
-      - name: Setup Pythom
+      - name: Setup Python
         uses: actions/setup-python@v2
         with: 
           python-version: 3.8
-      - name: Execute Python code
-        run: |
-          name_of_cloud_function=${{ github.event.inputs.Name }} region=${{ github.event.inputs.Region }} python Python_scripts/cloud_function.py
+          
+      - name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}'
 
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+
+      - name: 'Use gcloud CLI'
+        run: 'gcloud info'
     
         
