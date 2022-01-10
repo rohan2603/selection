@@ -4,7 +4,7 @@
 import os
 from google.cloud import storage
 from google.cloud.exceptions import NotFound
-# from google.cloud.exceptions import Forbidden
+from google.cloud.exceptions import Forbidden
 
 def main():
     name_of_bucket = os.environ['name_of_bucket']
@@ -23,7 +23,10 @@ def main():
     except NotFound:
         print('Error: Bucket does NOT exists!!')
         pass
-
+    except Forbidden:
+        print('Error: Forbidden, you do not have access to it!!')
+        pass
+  
     return
   
 
