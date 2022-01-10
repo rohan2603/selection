@@ -80,7 +80,7 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v0'
 
       - name: 'Use gcloud CLI'
-        run: 'gcloud alpha storage rm --recursive gs://${{ github.event.inputs.Name }}/'
+        run: 'gcloud alpha storage rm --quiet --recursive gs://${{ github.event.inputs.Name }}/'
 
   GCP_Cloud_Function_Deployment:
     runs-on: ubuntu-latest
