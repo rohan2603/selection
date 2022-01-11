@@ -21,7 +21,7 @@ on:
       #     - Cloud function  
       #   required: true
       Name_of_the_Storage_Bucket:
-        description: 'Name of the Cloud Function to be created'
+        description: 'Name of the Storage Bucket to be created'
         required: true
       Name_of_the_Cloud_Function:
         description: 'Name of the Cloud Function to be created'
