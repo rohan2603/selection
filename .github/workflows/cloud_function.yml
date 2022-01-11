@@ -1,0 +1,59 @@
+---
+ 
+name: GCP Cloud Functions
+on: 
+  workflow_dispatch:
+    inputs:
+      Operation_Needed:
+        type: choice
+        description: What operation needs to be performed  
+        options:
+          - Select Operation to be Performed
+          - Create
+          - Delete 
+        required: true
+      # GCP_Service:
+      #   type: choice
+      #   description: Choose GCP Service  
+      #   options:
+      #     - Select GCP service you want to deploy
+      #     - Storage Bucket
+      #     - Cloud function  
+      #   required: true
+      Name_of_the_Storage_Bucket:
+        description: 'Name of the Cloud Function to be created'
+        required: true
+      Name_of_the_Cloud_Function:
+        description: 'Name of the Cloud Function to be created'
+        required: true
+      Region:
+        description: 'Region where to be created'
+        required: true
+      name_of_the_folder:
+        description: 'Folder path'
+        required: true
+
+jobs:
+  GCP_Cloud_Function_Deployment:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.Operation_Needed == 'Create' }}
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with: 
+          python-version: 3.8
+
+      - name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}'
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+
+      - name: 'Use gcloud CLI'
+        run: 'gcloud functions deploy ${{ github.event.inputs.Name_of_the_Cloud_Function }} --entry-point ${{ github.event.inputs.name_of_the_folder }} --runtime python39 --trigger-resource ${{ github.event.inputs.Name_of_the_Storage_Bucket }} --trigger-event google.storage.object.finalize'
+    
+        

@@ -1,6 +1,7 @@
+  #   steps:
 ---
  
-name: GCP Services Deployment
+name: GCP Storage Bucket 
 on: 
   workflow_dispatch:
     inputs:
@@ -90,25 +91,24 @@ jobs:
         run: |
           name_of_bucket=${{ github.event.inputs.Name }} python Python_scripts/delete_bucket.py
 
-  GCP_Cloud_Function_Deployment:
-    runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.GCP_Service == 'Cloud Function' }}
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with: 
-          python-version: 3.8
+  # GCP_Cloud_Function_Deployment:
+  #   runs-on: ubuntu-latest
+  #   if: ${{ github.event.inputs.GCP_Service == 'Cloud Function' }}
+  #     - uses: actions/checkout@v2
+  #     - name: Setup Python
+  #       uses: actions/setup-python@v2
+  #       with: 
+  #         python-version: 3.8
 
-      - name: 'Authenticate to Google Cloud'
-        uses: 'google-github-actions/auth@v0'
-        with:
-          credentials_json: '${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}'
+  #     - name: 'Authenticate to Google Cloud'
+  #       uses: 'google-github-actions/auth@v0'
+  #       with:
+  #         credentials_json: '${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}'
 
-      - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v0'
+  #     - name: 'Set up Cloud SDK'
+  #       uses: 'google-github-actions/setup-gcloud@v0'
 
-      - name: 'Use gcloud CLI'
-        run: 'gcloud info'
+  #     - name: 'Use gcloud CLI'
+  #       run: 'gcloud functions deploy ${{ github.event.inputs.Name }} --entry-point folder-name --runtime python39 --trigger-resource <name of the bucket> --trigger-event google.storage.object.finalize'
     
         
