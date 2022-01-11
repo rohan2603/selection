@@ -6,7 +6,7 @@ on:
     inputs:
       Operation_Needed:
         type: choice
-        description: Select from menu 
+        description: What operation needs to be performed  
         options:
           - Select Operation to be Performed
           - Create
@@ -21,10 +21,10 @@ on:
       #     - Cloud function  
         # required: true
       Name:
-        description: 'Name'
+        description: 'Name of the GCP bucket to be created'
         required: true
       Region:
-        description: 'Region'
+        description: 'Region where to be created'
         required: true
 
 jobs:
@@ -88,6 +88,5 @@ jobs:
       - name: Execute Python code to Delete GCP Bucket
         run: |
           name_of_bucket=${{ github.event.inputs.Name }} python Python_scripts/delete_bucket.py
-
     
         
