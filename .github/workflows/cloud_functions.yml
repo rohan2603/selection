@@ -23,6 +23,9 @@ on:
       Name_of_the_Storage_Bucket:
         description: 'Name of the Storage Bucket to be created'
         required: true
+      source_folder:
+        description: 'Enter the source'
+        required: true
       Name_of_the_Cloud_Function:
         description: 'Name of the Cloud Function to be created'
         required: true
@@ -34,7 +37,7 @@ on:
         required: true
 
 jobs:
-  GCP_Cloud_Function_Deployment:
+  Create_Cloud_Function_Deployment:
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.Operation_Needed == 'Create' }}
     steps:
@@ -54,7 +57,7 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v0'
 
       - name: 'Use gcloud CLI'
-        run: 'gcloud functions deploy ${{ github.event.inputs.Name_of_the_Cloud_Function }} --entry-point ${{ github.event.inputs.entry_point }} --runtime python39 --source src --trigger-resource ${{ github.event.inputs.Name_of_the_Storage_Bucket }} --trigger-event google.storage.object.finalize'
+        run: 'gcloud functions deploy ${{ github.event.inputs.Name_of_the_Cloud_Function }} --entry-point ${{ github.event.inputs.entry_point }} --runtime python39 --source ${{ github.event.inputs.source_folder }} --trigger-resource ${{ github.event.inputs.Name_of_the_Storage_Bucket }} --trigger-event google.storage.object.finalize'
     
 #  # the actual deployment to google
 #       - name: Cloud Functions Deploy
