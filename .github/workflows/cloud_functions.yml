@@ -76,4 +76,4 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v0'
 
       - name: 'Delete Cloud Function'
-        run: 'gcloud functions delete ${{ github.event.inputs.Name_of_the_Cloud_Function }} '        
+        run: 'gcloud functions delete ${{ github.event.inputs.Name_of_the_Cloud_Function }}'        
