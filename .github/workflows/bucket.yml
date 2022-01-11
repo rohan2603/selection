@@ -12,16 +12,16 @@ on:
           - Create
           - Delete 
         required: true
-      GCP_Service:
-        type: choice
-        description: Choose GCP Service  
-        options:
-          - Select GCP service you want to deploy
-          - Storage Bucket
-          - Cloud function  
-        required: true
+      # GCP_Service:
+      #   type: choice
+      #   description: Choose GCP Service  
+      #   options:
+      #     - Select GCP service you want to deploy
+      #     - Storage Bucket
+      #     - Cloud function  
+        # required: true
       Name:
-        description: 'Name of the GCP resource to be created'
+        description: 'Name of the GCP bucket to be created'
         required: true
       Region:
         description: 'Region where to be created'
@@ -30,7 +30,7 @@ on:
 jobs:
   GCP_Create_Bucket:
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.Operation_Needed == 'Create' && github.event.inputs.GCP_Service == 'Storage Bucket' }}
+    if: ${{ github.event.inputs.Operation_Needed == 'Create' }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -60,7 +60,7 @@ jobs:
 
   GCP_Delete_Bucket:
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.Operation_Needed == 'Delete' && github.event.inputs.GCP_Service == 'Storage Bucket' }}
+    if: ${{ github.event.inputs.Operation_Needed == 'Delete' }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -88,27 +88,6 @@ jobs:
       - name: Execute Python code to Delete GCP Bucket
         run: |
           name_of_bucket=${{ github.event.inputs.Name }} python Python_scripts/delete_bucket.py
-
-  # GCP_Cloud_Function_Deployment:
-  #   runs-on: ubuntu-latest
-  #   if: ${{ github.event.inputs.GCP_Service == 'Cloud Function' }}
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Setup Python
-  #       uses: actions/setup-python@v2
-  #       with: 
-  #         python-version: 3.8
-
-  #     - name: 'Authenticate to Google Cloud'
-  #       uses: 'google-github-actions/auth@v0'
-  #       with:
-  #         credentials_json: '${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}'
-
-  #     - name: 'Set up Cloud SDK'
-  #       uses: 'google-github-actions/setup-gcloud@v0'
-
-  #     - name: 'Use gcloud CLI'
-  #       run: 'gcloud info'
 
     
         

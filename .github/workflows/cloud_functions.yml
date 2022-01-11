@@ -12,32 +12,29 @@ on:
           - Create
           - Delete 
         required: true
-      # GCP_Service:
-      #   type: choice
-      #   description: Choose GCP Service  
-      #   options:
-      #     - Select GCP service you want to deploy
-      #     - Storage Bucket
-      #     - Cloud function  
-      #   required: true
+
       Name_of_the_Storage_Bucket:
         description: 'Name of the Storage Bucket to be created'
         required: true
+
       source_folder:
         description: 'Enter the source'
         required: true
+
       Name_of_the_Cloud_Function:
         description: 'Name of the Cloud Function to be created'
         required: true
+
       Region:
         description: 'Region where to be created'
         required: true
+
       entry_point:
         description: 'Entry Point'
         required: true
 
 jobs:
-  Create_Cloud_Function_Deployment:
+  Create_Cloud_Function:
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.Operation_Needed == 'Create' }}
     steps:
@@ -56,21 +53,7 @@ jobs:
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v0'
 
-      - name: 'Use gcloud CLI'
+      - name: 'Deploy Cloud Function'
         run: 'gcloud functions deploy ${{ github.event.inputs.Name_of_the_Cloud_Function }} --entry-point ${{ github.event.inputs.entry_point }} --runtime python39 --source ${{ github.event.inputs.source_folder }} --trigger-resource ${{ github.event.inputs.Name_of_the_Storage_Bucket }} --trigger-event google.storage.object.finalize'
-    
-#  # the actual deployment to google
-#       - name: Cloud Functions Deploy
-#         uses: google-github-actions/deploy-cloud-functions@v0.1.2
-#         with:
-#           credentials: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
-#           name: ${{ github.event.inputs.Name_of_the_Cloud_Function }}
-#           description: Test python cloud function # nullable
-#           project_id: ${{ secrets.GCP_PROJECT_ID }}
-#           region: us-west1
-#           source_dir: src
-#           entry_point: github.event.inputs.entry_point
-#           runtime: python39
 
-    
         
