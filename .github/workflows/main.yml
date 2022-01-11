@@ -8,6 +8,7 @@ on:
         type: choice
         description: What operation needs to be performed  
         options:
+          - Select Operation to be Performed
           - Create
           - Delete 
         required: true
@@ -15,6 +16,7 @@ on:
         type: choice
         description: Choose GCP Service  
         options:
+          - Select GCP service you want to deploy
           - Storage Bucket
           - Cloud function  
         required: true
