@@ -21,10 +21,10 @@ on:
       #     - Cloud function  
         # required: true
       Name:
-        description: 'Name of the GCP bucket to be created'
+        description: 'Name of the GCP bucket'
         required: true
       Region:
-        description: 'Region where to be created'
+        description: 'Region'
         required: true
 
 jobs:

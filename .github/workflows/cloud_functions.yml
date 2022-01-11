@@ -14,7 +14,7 @@ on:
         required: true
 
       Name_of_the_Storage_Bucket:
-        description: 'Name of the Storage Bucket to be created'
+        description: 'Name of the GCP Bucket'
         required: true
 
       source_folder:
@@ -22,11 +22,11 @@ on:
         required: true
 
       Name_of_the_Cloud_Function:
-        description: 'Name of the Cloud Function to be created'
+        description: 'Name of the Cloud Function'
         required: true
 
       Region:
-        description: 'Region where to be created'
+        description: 'Region'
         required: true
 
       entry_point:
@@ -56,4 +56,24 @@ jobs:
       - name: 'Deploy Cloud Function'
         run: 'gcloud functions deploy ${{ github.event.inputs.Name_of_the_Cloud_Function }} --entry-point ${{ github.event.inputs.entry_point }} --runtime python39 --source ${{ github.event.inputs.source_folder }} --trigger-resource ${{ github.event.inputs.Name_of_the_Storage_Bucket }} --trigger-event google.storage.object.finalize'
 
-        
+  Delete_Cloud_Function:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.Operation_Needed == 'Delete' }}
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with: 
+          python-version: 3.8
+
+      - name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}'
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+
+      - name: 'Delete Cloud Function'
+        run: 'gcloud functions delete ${{ github.event.inputs.Name_of_the_Cloud_Function }} '        
