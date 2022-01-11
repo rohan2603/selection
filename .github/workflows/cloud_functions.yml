@@ -54,7 +54,7 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v0'
 
       - name: 'Use gcloud CLI'
-        run: 'gcloud functions deploy ${{ github.event.inputs.Name_of_the_Cloud_Function }} --entry-point ${{ github.event.inputs.entry_point }} --runtime python39 --trigger-bucket ${{ github.event.inputs.Name_of_the_Storage_Bucket }} --trigger-event google.storage.object.finalize'
+        run: 'gcloud functions deploy ${{ github.event.inputs.Name_of_the_Cloud_Function }} --entry-point ${{ github.event.inputs.entry_point }} --runtime python39 --trigger-resource ${{ github.event.inputs.Name_of_the_Storage_Bucket }} --trigger-event google.storage.object.finalize'
     
 #  # the actual deployment to google
 #       - name: Cloud Functions Deploy
