@@ -6,7 +6,7 @@ on:
     inputs:
       Operation_Needed:
         type: choice
-        description: What operation needs to be performed  
+        description: Select from menu 
         options:
           - Select Operation to be Performed
           - Create
@@ -21,7 +21,7 @@ on:
       #     - Cloud function  
         # required: true
       Name:
-        description: 'Name of the GCP bucket'
+        description: 'Name'
         required: true
       Region:
         description: 'Region'
