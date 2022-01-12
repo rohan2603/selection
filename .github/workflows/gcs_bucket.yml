@@ -1,6 +1,6 @@
 ---
  
-name: GCP Bucket Deployment
+name: GCS Bucket Deployment
 on: 
   workflow_dispatch:
     inputs:
@@ -12,17 +12,11 @@ on:
           - Create
           - Delete 
         required: true
-      # GCP_Service:
-      #   type: choice
-      #   description: Choose GCP Service  
-      #   options:
-      #     - Select GCP service you want to deploy
-      #     - Storage Bucket
-      #     - Cloud function  
-        # required: true
+
       Name:
         description: 'Name of the GCP bucket to be created'
         required: true
+
       Region:
         description: 'Region where to be created'
         required: true
@@ -34,6 +28,7 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
+        
       - name: Setup Python
         uses: actions/setup-python@v2
         with: 
