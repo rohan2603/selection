@@ -1,13 +1,11 @@
-name: Sonarqube
 on:
-  repository_dispatch:
-    types: [trigger-workflow-2]
+  push:
+    branches:
+      - ${GITHUB_REF}
+
 jobs:
-  docker:
+  which_branch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.client_payload.sha }}
-      - name: my-step-3
-        run: echo "workflow3"
+      - run: echo "Hello"
+
