@@ -1,7 +1,8 @@
 on:
   push:
     branches:
-      - ${GITHUB_REF}
+      - '*'
+      - '!master'
 
 jobs:
   which_branch:
