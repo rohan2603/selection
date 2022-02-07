@@ -6,17 +6,11 @@ on:
   pull_request:
     branches: [ master ]
 
-# defaults:
-#   run:
-#     working-directory: ./cicd
-
 jobs:
   build:
   defaults:
-  run:
-    working-directory: ./cicd
-    # env:
-    #   working-directory: ./cicd
+    run:
+      working-directory: ./cicd
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
