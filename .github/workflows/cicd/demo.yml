@@ -6,16 +6,15 @@ on:
   pull_request:
     branches: [ master ]
 
-defaults:
-  run:
-    working-directory: ./cicd
-
+# defaults:
+#   run:
+#     working-directory: ./cicd
 jobs:
   build:
-    # env:
-    #   working-directory: ./cicd
+    env:
+      working-directory: ./cicd
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - run: echo "hello"
-      #workflow_dispatch: {{ env.working-directory}}
+      - uses: actions/checkout@v2
+      - run: echo "hello"
+        working-directory: {{ env.working-directory}}
