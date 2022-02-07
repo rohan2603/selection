@@ -1,10 +1,14 @@
 name: demo
 
-on : [push]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
-defaults:
-  run:
-    working-directory: cicd
+# defaults:
+#   run:
+#     working-directory: cicd
 
 jobs:
   build:
