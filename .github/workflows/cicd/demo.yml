@@ -2,19 +2,20 @@ name: demo
 
 on:
   push:
-    paths:
-    - 'cicd/**'
-  pull_request:
-    paths: 
-    - 'cicd/**'
+    branches:
+      - master
+
+defaults:
+  run:
+    working-directory: cicd
 
 jobs:
-  build_cicd:
-  # defaults:
-  #   run:
-  #     working-directory: ./cicd
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          working-directory: cicd
       - run: echo "hello"
+        working-directory: cicd
 
