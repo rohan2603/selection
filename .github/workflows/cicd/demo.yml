@@ -2,11 +2,11 @@ name: demo
 
 on:
   push:
-    branches: [ master ]
+    paths:
+    - 'cicd/**'
   pull_request:
-    branches: [ master ]
-  path:
-    ./cicd
+    paths: 
+    - 'cicd/**'
 
 jobs:
   build:
