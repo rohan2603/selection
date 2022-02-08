@@ -9,7 +9,7 @@ on:
     - 'cicd/**'
 
 jobs:
-  build:
+  build_cicd:
   # defaults:
   #   run:
   #     working-directory: ./cicd
