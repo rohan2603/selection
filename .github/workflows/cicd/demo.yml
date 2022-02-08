@@ -5,6 +5,8 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  path:
+    ./cicd
 
 jobs:
   build:
@@ -14,10 +16,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          repository: rohan2603/selection
-          path: cicd
-
       - run: echo "hello"
-        working-directory: ./cicd
 
