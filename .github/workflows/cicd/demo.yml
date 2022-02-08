@@ -8,11 +8,16 @@ on:
 
 jobs:
   build:
-  defaults:
-    run:
-      working-directory: ./cicd
+  # defaults:
+  #   run:
+  #     working-directory: ./cicd
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          repository: rohan2603/selection
+          path: cicd
+
       - run: echo "hello"
+        working-directory: ./cicd
 
