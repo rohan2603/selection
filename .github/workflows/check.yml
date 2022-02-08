@@ -17,6 +17,5 @@ jobs:
         with:
           working-directory: cicd
       - run: echo "hello"
-        with:
-          working-directory: cicd
+        working-directory: cicd
 
