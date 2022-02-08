@@ -7,7 +7,7 @@ on:
 
 defaults:
   run:
-    working-directory: ./cicd
+    working-directory: cicd
 
 jobs:
   build:
